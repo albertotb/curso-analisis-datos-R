@@ -2,7 +2,6 @@
 
 #### **Bloque 1:** Introducción y manipulación de datos
    - Introducción a R [[slides]](./src/00-intro.html)
-
      - IDE RStudio
      - Clase data.frame
      - Introducción a RMarkdown
@@ -24,7 +23,6 @@
 
 #### **Bloque 3:** Importar y transformar datos
    - Transformar data.frames con `tidyr` [[slides]](./src/03-tidyr.html)
-
      - Transformar entre formatos ancho y largo (`spread` y `gather`)
      - Separar o unir columnas (`separate` y `unite`)
 
@@ -37,7 +35,6 @@
 
 #### **Bloque 4:** `dplyr` y `ggplot2` avanzado
    - `dplyr` avanzado [[slides]](./src/10-dplyr_cont.html)
-
      - Sentencia `group_by`
      - Operaciones agrupadas
      - Operaciones en múltiples columnas
