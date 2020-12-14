@@ -1,0 +1,186 @@
+---
+title: "tidyr"
+subtitle: "Entornos de Análisis de Datos: R"
+author: "Alberto Torres Barrán"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    css: ["default", "custom.css"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      beforeInit: "macros.js"
+    includes:
+      before_body: mathjax.html
+    keep_md: true
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, collapse = TRUE, fig.align='center')
+```
+
+## Introducción
+
+- El 80% del tiempo de un análisis se emplea limpiando y preparando los datos (Dasu y Johnson, 2003)
+
+- Importados los datos, es importante estructurarlos para que el análisis sea lo más fácil posible
+
+- Las librerías del tidyverse están construidas alrededor del concepto de datos ordenados o *tidy data*:
+    + Cada variable forma una columna
+    + Cada observación forma una fila
+    + Cada tipo de observación forma una tabla
+    
+- Datos tabulares/rectangulares no implican datos ordenados!!
+
+---
+
+## Formas de almacenamiento
+
+Distintas formas de almacenar los mismos datos [R for Data Science]:
+
+```{r}
+table1
+```
+
+---
+
+```{r}
+table2
+```
+
+---
+
+```{r}
+table3
+```
+
+---
+
+```{r}
+table4a
+```
+```{r}
+table4b
+```
+
+---
+
+## Formatos "ancho" y "largo"
+
+.center[
+![:scale 90%](img/original-dfs-tidy.png)    
+.footnotesize[Fuente: https://github.com/gadenbuie/tidyexplain]
+]
+---
+
+## Operaciones con datos ordenados
+
+```{r}
+table1 %>%
+  mutate(ratio = cases / population * 10000)
+```
+
+---
+
+```{r}
+table1 %>%
+  group_by(year) %>%
+  summarize(total = sum(cases))
+```
+
+---
+
+```{r}
+table1 %>%
+  mutate(ratio = cases / population * 10000,
+         year = as.character(year)) %>%
+  ggplot(mapping = aes(x = country, y = ratio, fill = year)) +
+    geom_bar(stat = "identity", position = "dodge")
+```
+
+---
+    
+# tidyr 1.0
+
+* Desde la versión 1.0 de tidyr, se han creado versiones más potentes de las antiguas `spread` y `gather`
+
+* En la siguiente tabla podemos ver la equivalencia:
+
+| pandas  | tidyr <1.0 | tidyr 1.0      | data.table | reshape2 |
+|---------|------------|----------------|------------|----------|
+| pivot   | spread     | pivot_wider    | dcast      | cast     |
+| melt    | gather     | pivot_longer   | melt       | melt     |
+
+---
+
+## pivot_wider
+
+```{r}
+head(table2)
+```
+
+```{r}
+pivot_wider(table2, names_from = type, values_from = count)
+```
+
+---
+
+## pivot_longer
+
+```{r}
+table4a
+```
+
+```{r}
+pivot_longer(table4a, names_to = "year", values_to = "cases", -country)
+```
+
+---
+
+## Ejemplo
+
+.center[
+<video width="640" height="480" controls>
+  <source src="img/pivot.mp4" type="video/mp4">
+</video>
+]
+---
+
+## separate
+
+```{r}
+table3
+```
+
+```{r}
+separate(table3, rate, into = c("cases", "population"), sep = "/")
+```
+
+---
+
+- Por defecto `separate()` mantiene el tipo de la columna en las nuevas
+
+```{r}
+separate(table3, rate, into = c("cases", "population"), sep = "/", convert = TRUE)
+```
+
+---
+
+## unite
+
+```{r}
+unite(mpg, make, manufacturer, model, sep = " ")
+```
+
+---
+
+## Otras funciones
+
+tidyr también tiene otras funciones útiles para trabajar con `NA`s:
+
+- `drop_na()`, elimina filas que tengan algún `NA`
+- `fill()`, completa `NA`s con el valor anterior
+- `replace_na()`, reemplaza `NA`s por un valor
