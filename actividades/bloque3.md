@@ -55,10 +55,10 @@ write_csv(mpg, "mpg.csv", col_names = FALSE)
 Dado el fichero de texto anterior:
 
 1. ¿Por qué da error el siguiente código?
-   ![](img/bloque3_err1.png)
+   `mpg1 <- read_csv("mpg", col_names = FALSE)`
 
 2. ¿Y el siguiente código?
-   ![](img/bloque3_err2.png)
+   `mpg1 <- read.csv("mpg.csv", col_names = FALSE)`
 
 ## Ejemplos de importar ficheros
 
