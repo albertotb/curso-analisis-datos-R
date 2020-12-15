@@ -70,7 +70,8 @@
 
 1. [dplyr y ggplot2](ejercicios/ejercicios1.html)
 2. [tidyr y readr](ejercicios/ejercicios2.html)
-3. [stringr, lubridate y forcats](ejercicios/ejercicios3.html)
+3. [dplyr y ggplot2 (cont)](ejercicios/ejercicios3.html)
+4. [stringr, lubridate y forcats](ejercicios/ejercicios4.html)
 
 ## Enlaces
 
