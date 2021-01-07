@@ -350,7 +350,8 @@ t4b
 .col-right[
 
 ```r
-join &lt;- inner_join(t4a, t4b, by=c("year" = "YEAR", "country"))
+join &lt;- inner_join(t4a, t4b, 
+                   by=c("year" = "YEAR", "country"))
 join
 ## # A tibble: 6 x 4
 ##   country     year   cases population

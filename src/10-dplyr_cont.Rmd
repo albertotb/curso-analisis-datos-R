@@ -216,7 +216,8 @@ t4b
 
 .col-right[
 ```{r}
-join <- inner_join(t4a, t4b, by=c("year" = "YEAR", "country"))
+join <- inner_join(t4a, t4b, 
+                   by=c("year" = "YEAR", "country"))
 join
 ```
 ]

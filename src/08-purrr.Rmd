@@ -62,7 +62,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, collapse = 
 
 Pueden contener elementos de distinto tipo, incluido otras listas
 
-    ```{r}
+```{r}
 l <- list(a = "a", b = 10.2, c = TRUE, d = 1:10, e = list(1, 2))
 str(l)
 ```
