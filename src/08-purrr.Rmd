@@ -38,10 +38,9 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, collapse = 
     * longitud, función `length()`
     
   * Los elementos de un vector pueden tener nombre
-  
-```{r}
-c(a = 1, b = 2, c = 3)
-```
+    ```{r}
+    c(a = 1, b = 2, c = 3) 
+    ```
 
 ---
 
@@ -52,19 +51,18 @@ c(a = 1, b = 2, c = 3)
   * Convertir de un tipo a otro: `as.logical()`, `as.integer()`, `as.double()`, `as.character()`
   
   * Cuando combinamos elementos de distinto tipo, existe una conversión implícita al tipo más genérico
-  
-```{r}
-5 + TRUE
-c(4.5, "hola")
-```
+    ```{r}
+    5 + TRUE 
+    c(4.5, "hola")
+    ```
 
 ---
 
 ## Listas
 
-  * Pueden contener elementos de distinto tipo, incluido otras listas
-  
-```{r}
+Pueden contener elementos de distinto tipo, incluido otras listas
+
+    ```{r}
 l <- list(a = "a", b = 10.2, c = TRUE, d = 1:10, e = list(1, 2))
 str(l)
 ```
@@ -76,25 +74,22 @@ str(l)
 Distintas formas de indexar elementos:
 
   1. `[` extrae una sub-lista
-  
-```{r}
-l[1:3]
-```
+    ```{r}
+    l[1:3]
+    ```
   
   2. `[[` extrae un elemento
-
-```{r}
-l[[4]]
+    ```{r}
+    l[[4]]
     
-l[["d"]]
-```
+    l[["d"]]
+    ```
 
  
   3. `$` similar a `[[` pero solo se puede usar con la etiqueta del elemento (no posicion)
-
-```{r}
-l$d
-```
+    ```{r}
+    l$d
+    ```
 
 ---
 
@@ -109,12 +104,11 @@ l$d
     * *Tibbles* y *data.frames*, a partir de listas
 
   * Podemos comprobar estos tipos aumentados con la función `class()`
-  
-```{r}
-class(mpg)
-    
-typeof(mpg)
-```
+    ```{r}
+    class(mpg)
+     
+    typeof(mpg)
+    ```
   
 ---
 
@@ -269,7 +263,6 @@ Los bucles for tienen 3 partes:
   2. **Secuencia**: determina el número de repeticiones y el valor de `i` en cada una de ellas
   
   3. **Cuerpo**: entre corchetes (`{}`), es el código que se va a repetir para cada uno de los valores de `i`
-  
   
 ```{r}
 df <- select(mpg, is.numeric)

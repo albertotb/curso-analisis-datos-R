@@ -53,13 +53,12 @@ MathJax.Hub.Config({
     * longitud, función `length()`
     
   * Los elementos de un vector pueden tener nombre
-  
-
-```r
-c(a = 1, b = 2, c = 3)
-## a b c 
-## 1 2 3
-```
+    
+    ```r
+    c(a = 1, b = 2, c = 3) 
+    ## a b c 
+    ## 1 2 3
+    ```
 
 ---
 
@@ -70,34 +69,33 @@ c(a = 1, b = 2, c = 3)
   * Convertir de un tipo a otro: `as.logical()`, `as.integer()`, `as.double()`, `as.character()`
   
   * Cuando combinamos elementos de distinto tipo, existe una conversión implícita al tipo más genérico
-  
-
-```r
-5 + TRUE
-## [1] 6
-c(4.5, "hola")
-## [1] "4.5"  "hola"
-```
+    
+    ```r
+    5 + TRUE 
+    ## [1] 6
+    c(4.5, "hola")
+    ## [1] "4.5"  "hola"
+    ```
 
 ---
 
 ## Listas
 
-  * Pueden contener elementos de distinto tipo, incluido otras listas
-  
+Pueden contener elementos de distinto tipo, incluido otras listas
 
-```r
-l &lt;- list(a = "a", b = 10.2, c = TRUE, d = 1:10, e = list(1, 2))
-str(l)
-## List of 5
-##  $ a: chr "a"
-##  $ b: num 10.2
-##  $ c: logi TRUE
-##  $ d: int [1:10] 1 2 3 4 5 6 7 8 9 10
-##  $ e:List of 2
-##   ..$ : num 1
-##   ..$ : num 2
-```
+    
+    ```r
+    l &lt;- list(a = "a", b = 10.2, c = TRUE, d = 1:10, e = list(1, 2))
+    str(l)
+    ## List of 5
+    ##  $ a: chr "a"
+    ##  $ b: num 10.2
+    ##  $ c: logi TRUE
+    ##  $ d: int [1:10] 1 2 3 4 5 6 7 8 9 10
+    ##  $ e:List of 2
+    ##   ..$ : num 1
+    ##   ..$ : num 2
+    ```
 
 ---
 
@@ -106,39 +104,36 @@ str(l)
 Distintas formas de indexar elementos:
 
   1. `[` extrae una sub-lista
-  
-
-```r
-l[1:3]
-## $a
-## [1] "a"
-## 
-## $b
-## [1] 10.2
-## 
-## $c
-## [1] TRUE
-```
+    
+    ```r
+    l[1:3]
+    ## $a
+    ## [1] "a"
+    ## 
+    ## $b
+    ## [1] 10.2
+    ## 
+    ## $c
+    ## [1] TRUE
+    ```
   
   2. `[[` extrae un elemento
-
-
-```r
-l[[4]]
-##  [1]  1  2  3  4  5  6  7  8  9 10
     
-l[["d"]]
-##  [1]  1  2  3  4  5  6  7  8  9 10
-```
+    ```r
+    l[[4]]
+    ##  [1]  1  2  3  4  5  6  7  8  9 10
+    
+    l[["d"]]
+    ##  [1]  1  2  3  4  5  6  7  8  9 10
+    ```
 
  
   3. `$` similar a `[[` pero solo se puede usar con la etiqueta del elemento (no posicion)
-
-
-```r
-l$d
-##  [1]  1  2  3  4  5  6  7  8  9 10
-```
+    
+    ```r
+    l$d
+    ##  [1]  1  2  3  4  5  6  7  8  9 10
+    ```
 
 ---
 
@@ -153,15 +148,14 @@ l$d
     * *Tibbles* y *data.frames*, a partir de listas
 
   * Podemos comprobar estos tipos aumentados con la función `class()`
-  
-
-```r
-class(mpg)
-## [1] "tbl_df"     "tbl"        "data.frame"
     
-typeof(mpg)
-## [1] "list"
-```
+    ```r
+    class(mpg)
+    ## [1] "tbl_df"     "tbl"        "data.frame"
+     
+    typeof(mpg)
+    ## [1] "list"
+    ```
   
 ---
 
@@ -345,7 +339,6 @@ Los bucles for tienen 3 partes:
   2. **Secuencia**: determina el número de repeticiones y el valor de `i` en cada una de ellas
   
   3. **Cuerpo**: entre corchetes (`{}`), es el código que se va a repetir para cada uno de los valores de `i`
-  
   
 
 ```r

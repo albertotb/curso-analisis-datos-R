@@ -54,6 +54,7 @@
   - Fechas (`lubridate`) [[slides]](./src/07-lubridate.html)
 
 - Programación en R [[slides]](./src/08-purrr.html)
+  - Vectores
   - Ejecución condicional y funciones
   - Iteración
   - Iteración: librería `purrr`
