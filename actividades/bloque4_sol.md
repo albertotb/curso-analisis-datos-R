@@ -12,11 +12,11 @@
 
 1. Solución
 
-```{r}
-starwars %>%
-   group_by(sex) %>%
-   summarize(n = n())
-```
+   ```{r}
+   starwars %>%
+       group_by(sex) %>%
+       summarize(n = n())
+   ```
 
 2. Solución
    `count(starwars, sex)`
@@ -29,18 +29,16 @@ starwars %>%
 2. Se pueden pasar como argumentos a continuación de la lista de funciones
 3. Solución:
 
-```{r}
-library(dplyr)
+   ```{r}
+   library(dplyr)
 
-summarize(starwars,
-          across(c(height, mass, birth_year),
-                 list(min = min, max = max, mean = mean),
-                 na.rm = TRUE))
-```
+   summarize(starwars,
+             across(c(height, mass, birth_year),
+                    list(min = min, max = max, mean = mean),
+                    na.rm = TRUE))
+   ```
 
 #### Ejercicio 2
-
-1. Solución
 
 ```{r}
 library(dplyr)
@@ -57,10 +55,10 @@ starwars %>%
 
 1. Solución
 
-```{r}
-library(dplyr)
-full_join(band_members, band_instruments2, by = c("name" = "artist"))
-```
+   ```{r}
+   library(dplyr)
+   full_join(band_members, band_instruments2, by = c("name" = "artist"))
+   ```
 
 2. Si, porque hay valores de los dos data.frames que no tienen correspondencia en el otro
 
