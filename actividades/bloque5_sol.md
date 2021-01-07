@@ -1,4 +1,4 @@
-# Actividades
+# Soluciones
 
 ## stringr
 
