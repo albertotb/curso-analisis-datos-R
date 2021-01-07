@@ -3,7 +3,6 @@
 #### **Bloque 1:** Introducción y manipulación de datos
 
 - Introducción a R [[slides]](./src/00-intro.html)
-
   - IDE RStudio
   - Clase data.frame
   - Introducción a RMarkdown
@@ -25,7 +24,6 @@
 #### **Bloque 3:** Importar y transformar datos
 
 - Transformar data.frames con `tidyr` [[slides]](./src/03-tidyr.html)
-
   - Transformar entre formatos ancho y largo (`spread` y `gather`)
   - Separar o unir columnas (`separate` y `unite`)
 
@@ -38,7 +36,6 @@
 #### **Bloque 4:** `dplyr` y `ggplot2` avanzado
 
 - `dplyr` avanzado [[slides]](./src/10-dplyr_cont.html)
-
   - Sentencia `group_by`
   - Operaciones agrupadas
   - Operaciones en múltiples columnas
@@ -55,11 +52,11 @@
   - Texto (`stringr`) [[slides]](./src/05-stringr.html)
   - Factores (`forcats`) [[slides]](./src/06-forcats.html)
   - Fechas (`lubridate`) [[slides]](./src/07-lubridate.html)
+
 - Programación en R [[slides]](./src/08-purrr.html)
-  - Vectores
-  - Listas
-  - Funciones
-  - Iteración con `purrr`
+  - Ejecución condicional y funciones
+  - Iteración
+  - Iteración: librería `purrr`
 
 ## Actividades
 
@@ -68,6 +65,7 @@
 3. Bloque 3: [actividades](actividades/bloque3.md) ([soluciones](actividades/bloque3_sol.md))
 4. Bloque 4: [actividades](actividades/bloque4.md) ([soluciones](actividades/bloque4_sol.md))
 5. Bloque 5 (parte 1): [actividades](actividades/bloque5.md) ([soluciones](actividades/bloque5_sol.md))
+5. Bloque 5 (parte 2): [actividades](actividades/bloque6.md) ([soluciones](actividades/bloque6_sol.md))
 
 ## Ejercicios
 
