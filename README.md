@@ -43,8 +43,8 @@
 
 - `ggplot2` avanzado [[slides]](./src/09-ggplot2_cont.html)
   - Facetas (`facet_wrap`, `facet_grid`)
-  - Ejes
-  - Estilos
+  - Etiquetas y escalas
+  - Colores y temas
 
 #### **Bloque 5:** Tipos de datos y programación en R
 
