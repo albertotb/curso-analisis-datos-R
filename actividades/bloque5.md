@@ -4,14 +4,27 @@
 
 ### Expresiones regulares
 
-1. Modificar la expresión regular de la diapositiva 11 para que no acepte espacios entre el principio de la cadena y la @
+Modificar la siguiente expresión regular que valida direcciones de email: `".+@[^\\d\\s]+\\.(com|es)$"` para que no acepte espacios entre el principio de la cadena y la @
 
 ### Funciones stringr
 
-Con el data.frame sales_clean que genera el fichero Ejercicios>35.R
+Con el dataframe `sales_clean`:
 
-1. Usar la función str_to_title para transformar los nombres de los países `REGIONS/COUNTRIES` a minúscula, con la primera letra en mayúscula
-2. Crear un data.frame con los países de la columna que se ha creado en el punto anterior cuyo nombre empieza por “Z”
+```{r}
+library(readr)
+library(dplyr)
+library(tidyr)
+
+sales <- read_csv2('./data/Sales-all-vehicles-2017.csv', skip = 4)
+
+sales_clean <-
+  sales %>%
+    select(-starts_with("X")) %>%
+    drop_na()
+```
+
+1. Usar la función `str_to_title` para transformar los nombres de los países `REGIONS/COUNTRIES` a minúscula, con la primera letra en mayúscula
+2. Crear un dataframe con los países de la columna que se ha creado en el punto anterior cuyo nombre empieza por “Z”
 
 ## forcats
 
