@@ -23,7 +23,7 @@
 
 #### Ejercicio 2
 
-1. Dado el código que vimos en otro ejercicio para contar el número de personajes para cada uno de los valores de la columna sex:
+Dado el código que vimos en otro ejercicio para contar el número de personajes para cada uno de los valores de la columna sex:
 
 ```{r}
 starwars %>%
