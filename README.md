@@ -66,6 +66,7 @@
 1. Bloque 1: [actividades](actividades/bloque1.md) ([soluciones](actividades/bloque1_sol.md))
 2. Bloque 2: [actividades](actividades/bloque2.md) ([soluciones](actividades/bloque2_sol.md))
 3. Bloque 3: [actividades](actividades/bloque3.md) ([soluciones](actividades/bloque3_sol.md))
+4. Bloque 4: [actividades](actividades/bloque4.md) ([soluciones](actividades/bloque4_sol.md))
 
 ## Ejercicios
 
