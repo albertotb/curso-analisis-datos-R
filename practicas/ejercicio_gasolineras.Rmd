@@ -1,10 +1,14 @@
 ---
-title: "EADR: PEC"
+title: "Ejercicio gasolineras"
 
 output:
   pdf_document: default
   html_document: default
 ---
+
+```{r include = FALSE}
+knitr::opts_chunk$set(eval=FALSE, include=FALSE)
+```
 
 ## Enunciado
 
@@ -65,7 +69,7 @@ Vamos a trabajar con los ficheros "Estaciones.txt" y "Precios_2017_04_02.txt" ([
 # añadir codigo aqui
 ```
   
-  12. Crea un nuevo dataframe a partir del resultado del ejercicio 7 con las columnas `ID_estacion`, `fecha`, `tipo_gasolina` y `precio` y guarda el resultado en la variable `precios_long`. La variable `tipo_gasolina` tendrá los valores: "Precio_gasolina_95", "Precio_gasóleo_A", "Precio_gasóleo_B", "Precio_bioetanol", "Precio_nuevo_gasóleo_A", "Precio_biodiesel", "Precio_gasolina_98", "Precio_gas_natural_comprimido", "Precio_gas_natural_licuado" y "Precio_gases_licuados_del_petróleo".
+  12. Pivotar el dataframe resultado del ejercicio 7 para que tenga las columnas `ID_estacion`, `fecha`, `tipo_gasolina` y `precio` y guarda el resultado en la variable `precios_long`. La variable `tipo_gasolina` tendrá los valores: "Precio_gasolina_95", "Precio_gasóleo_A", "Precio_gasóleo_B", "Precio_bioetanol", "Precio_nuevo_gasóleo_A", "Precio_biodiesel", "Precio_gasolina_98", "Precio_gas_natural_comprimido", "Precio_gas_natural_licuado" y "Precio_gases_licuados_del_petróleo".
 ```{r}
 # añadir codigo aqui
 ```
@@ -90,7 +94,7 @@ Vamos a trabajar con los ficheros "Estaciones.txt" y "Precios_2017_04_02.txt" ([
 # añadir codigo aqui
 ```
   
-  17. Añade una variable de tipo lógico con nombre `ind_24H`, indicando si la gasolinera es 24H.
+  17. Añade una variable de tipo lógico con nombre `ind_24H`, indicando si la gasolinera es 24H, es decir, si aparecen las cadenas "24h" o "24H" en la columna `Horario`.
 ```{r}
 # añadir codigo aqui
 ```

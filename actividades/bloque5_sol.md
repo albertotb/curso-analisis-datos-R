@@ -8,6 +8,7 @@ La nueva expresión regular es `"^[:alnum:]+@[^\\d\\s]+\\.(com|es)$"`
 
 ### Funciones stringr
 
+#### Ejercicio 1
 1. Solución
 
    ```{r}
@@ -23,6 +24,15 @@ La nueva expresión regular es `"^[:alnum:]+@[^\\d\\s]+\\.(com|es)$"`
    library(stringr)
    sales2 <- filter(sales1, str_detect(region_country, "^Z"))
    ```
+
+#### Ejercicio 2
+
+```{r}
+bicis_long %>% 
+   mutate(Tipo_uso = str_replace(Tipo_uso, "^Usos bicis ", "")) %>% 
+   filter(Tipo_uso != "total")
+```
+
 
 ## forcats
 
@@ -75,4 +85,15 @@ bicis_hasta_1503 <-
 bicis_hasta_1503 %>%
   group_by(dia_semana, Tipo_uso) %>%
   summarize(total_usos = sum(Usos))
+  
+# apartados 4 y 5
+bicis_long %>% 
+   mutate(DIA = as_date(DIA)) %>% 
+   ggplot(aes(x = DIA, y = Usos)) +
+     geom_col() +
+     geom_vline(xintercept = ymd("2020-03-16"), linetype = "dashed") +
+     annotate("text", x = ymd("2020-03-17"), y = 10000,
+              label = "Cierre BiciMAD\npor estado de alarma",
+              hjust = "left") +
+     labs(x = "Día", y = "Número total de usos")
 ```

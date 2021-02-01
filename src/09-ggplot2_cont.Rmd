@@ -130,15 +130,15 @@ ggplot(diamonds, aes(x = price, y = carat)) +
 ---
 
 ```{r}
-max_idx <- which.max(economics$unemploy)
-max_data <- slice(economics, max_idx)
+library(dplyr)
+max_data <- slice_max(economics, unemploy)
 
 ggplot(economics, aes(x = date, y = unemploy)) + 
   geom_line() +
   geom_text(data = max_data, 
             label = str_glue_data(max_data, "Máximo de {unemploy}k desempleados el {date}"), 
             nudge_y = 100, nudge_x = -250, hjust = "right") +
-  annotate(geom = "point", x = max_data$date, y = max_data$unemploy, 
+  geom_point(data = max_data, aes(x = date, y = unemploy), 
            color = "red", shape = 21, fill = "transparent", size = 5)
 ```
 

@@ -51,4 +51,12 @@ map_dfr(starwars, fn)
 
 # apartado 4
 map_dfr(starwars, fn, .id = "variable")
+
+# apartado 5
+fn <- ~sum(is.na(.))
+
+# apartado 6
+escalar_max_min <- function(x) {
+  (x - min(x)) / (max(x) - min(x))
+}
 ```

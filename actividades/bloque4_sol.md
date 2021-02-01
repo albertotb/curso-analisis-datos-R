@@ -92,10 +92,15 @@ ggplot(bicis_long, aes(x = DIA, y = Usos, fill = `Tipo de día`)) +
 ### Ejes
 
 ```{r}
+dia17_10000 <- bicis %>%
+  slice(17) %>%
+  mutate(y = 10000)
+
 ggplot(bicis_long, aes(x = DIA, y = Usos)) +
   geom_col() +
-  geom_vline(xintercept = bicis$DIA[16], linetype = "dashed") +
-  annotate("text", x = bicis$DIA[17], y = 10000,
+  geom_vline(data = slice(bicis, 16), aes(xintercept = DIA), linetype = "dashed") +
+  # veremos una forma mas sencilla de hacer esto con lubridate
+  geom_text(data = dia17_10000, aes(x = DIA, y = y),
            label = "Cierre BiciMAD\npor estado de alarma",
            hjust = "left") +
   labs(x = "Día", y = "Número total de usos")

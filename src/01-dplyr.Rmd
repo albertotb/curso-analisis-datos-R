@@ -128,15 +128,6 @@ select(mpg, model:trans)
 
 ---
 
-## Predicados lógicos en select
-
-- A partir de la versión 1.0 de dplyr, [`select`](https://dplyr.tidyverse.org/dev/reference/select.html) también acepta predicados lógicos
-    ```{r}
-    select(mpg, is.numeric)
-    ```
-
----
-
 ## Funciones auxiliares
 
 Las siguientes funciones se pueden usar dentro de `select()`
@@ -146,35 +137,6 @@ Las siguientes funciones se pueden usar dentro de `select()`
 - `contains()`: contienen una string
 - `matches()`: concuerdan con una expresión regular
 - `num_range()`: rango numérico como "X01", "X02", "X03"
-- `any_of`, selecciona las variables contenidas en un vector de cadenas
-- `all_of`, igual que la anterior pero da un error si no están todas las variables
-
-```{r}
-vars <- c("cyl", "cty", "mpg")
-select(mpg, any_of(vars)) %>%
-  head(5)
-```
-
-
-```{r, error=TRUE}
-select(mpg, all_of(vars))
-```
-
----
-
-## Combinar múltiples selecciones
-
-* Se pueden utilizar los operadores `&`, `|` y `!` para combinar múltiples selecciones:
-    ```{r}
-    # Variables numéricas excepto cyl y year
-    select(mpg, is.numeric & !c(cyl, year)) %>%
-      head(5)
-    ```
-    ```{r}
-    # Contienen "y" o empiezan por "f"
-    select(mpg, contains("y") | starts_with("f")) %>%
-      head(5)
-    ```
 
 ---
 

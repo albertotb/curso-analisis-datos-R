@@ -1,0 +1,139 @@
+---
+title: "Solución ejercicio gasolineras"
+
+output:
+  pdf_document: default
+  html_document: default
+---
+
+## Enunciado
+
+```{r}
+library(dplyr)
+library(stringr)
+library(ggplot2)
+library(tidyr)
+library(lubridate)
+library(readr)
+library(purrr)
+library(forcats)
+```
+
+
+Vamos a trabajar con los ficheros "Estaciones.txt" y "Precios_2017_04_02.txt" ([fuente](https://geoportalgasolineras.es/#/Descargas)), que contienen información sobre el precio de distintos carburantes el día 2 de Abril de 2017 en estaciones de toda España:
+
+  1. Lee fichero de precios. Asegúrate de que todas las variables de precios son numéricas.
+```{r}
+precios <- read_tsv("Precios_2017_04_02.txt", locale = locale(decimal_mark = ","))
+```
+  
+  2. Cambia los espacios en los nombres de las columnas por '_'.
+```{r}
+precios <- rename_all(precios, ~str_replace_all(., " ", "_"))
+```
+  
+  3. Mira los tipos de datos del dataset de precios. Observa que la fecha no ha sido interpretada como tal. Conviértela a tipo fecha.
+```{r}
+precios <- mutate(precios, Fecha = dmy(Fecha))
+```
+  
+  4. Calcula el porcentaje de NAs de cada columna para la del dataframe de precios.
+```{r}
+per_na <- summarize_all(precios, ~mean(is.na(.))*100)
+```
+  
+  5. Elimina las columnas que no tengan ningún valor distinto de NA.
+```{r}
+precios <- select_if(precios, per_na < 100)
+```
+  
+  6. Crea un dataframe con la media, máximo y mínimo de las columnas numéricas.
+```{r}
+summarize_if(precios, is.numeric, 
+             list("media" = mean, "max" = max, "min" = min), na.rm = TRUE)
+```
+  
+  7. Habrás visto que el máximo del precio para gasolina 95 es un valor extredemadante alto. Para la variable precio de la gasolina 95, cambia todos los valores mayores a 3 (valores anómalos) por NA. Utiliza el data.frame resultado del ejercicio 5.
+```{r}
+precios <- mutate(precios, Precio_gasolina_95 = ifelse(Precio_gasolina_95 > 3, 
+                                                       NA, Precio_gasolina_95))
+```
+  
+  8. Selecciona las gasolineras que vendan gasolina 95 o 98.
+```{r}
+gas <- filter(precios, !is.na(Precio_gasolina_95) | !is.na(Precio_gasolina_98))
+```
+  
+  9. Selecciona las columnas que representan variables de precios usando el dataframe resultado del ejercicio 7.
+```{r}
+precio_var <- select(precios, starts_with("Precio"))
+```
+
+  10. Selecciona las 5 gasolineras con el precio de gasóleo B más barato usando el dataframe resultado del ejercicio 7.
+```{r}
+precios %>%
+  arrange(Precio_gasóleo_B) %>%
+  slice(1:5)
+```
+
+  11. Añade dos nuevas variables con los litros por euro de gasolina 95 y 98 usando el dataframe del ejercicio 7.
+```{r}
+precios <- mutate(precios, Litros_95 = 1/Precio_gasolina_95, 
+                           Litros_98 = 1/Precio_gasolina_98)
+```
+  
+   12. Pivotar el dataframe resultado del ejercicio 7 para que tenga las columnas `ID_estacion`, `fecha`, `tipo_gasolina` y `precio` y guarda el resultado en la variable `precios_long`. La variable `tipo_gasolina` tendrá los valores: "Precio_gasolina_95", "Precio_gasóleo_A", "Precio_gasóleo_B", "Precio_bioetanol", "Precio_nuevo_gasóleo_A", "Precio_biodiesel", "Precio_gasolina_98", "Precio_gas_natural_comprimido", "Precio_gas_natural_licuado" y "Precio_gases_licuados_del_petróleo".
+```{r}
+precios_long <- pivot_longer(precios, cols = starts_with("Precio"), 
+                             names_to = "tipo_gasolina", values_to = "precio")
+```
+  
+  13. En la variable `tipo_gasolina` del ejercicio anterior, elimina el texto "Precio_".
+```{r}
+precios_long <- mutate(precios_long, tipo_gasolina = str_remove(tipo_gasolina, "Precio_"))
+```
+  
+  14. Haz un histograma de todas las variables de precio **usando facetas** de ggplot.
+```{r}
+ggplot(precios_long, aes(x = precio)) + 
+  geom_histogram() + 
+  facet_wrap(~tipo_gasolina)
+```
+  
+  15. Lee el fichero de estaciones y júntalo con el dataframe resultado del ejercicio 7 utilizando como clave el `ID_ESTACION`. Considerar únicamente las gasolineras presentes en las dos tablas.
+```{r}
+estaciones <- read_tsv("Estaciones.txt", locale = locale(decimal_mark = ","))
+
+precio_estacion <- inner_join(precios, estaciones, by = "ID_ESTACION")
+```
+  
+  16. Calcula el precio medio de gasolina 95 por provincia.
+```{r}
+precio_estacion %>% 
+  group_by(Provincia) %>%
+  summarize(precio_medio = mean(Precio_gasolina_95, na.rm = TRUE))
+```
+  
+  17. Añade una variable de tipo lógico con nombre `ind_24H`, indicando si la gasolinera es 24H, es decir, si aparecen las cadenas "24h" o "24H" en la columna `Horario`.
+```{r}
+precio_estacion <- mutate(precio_estacion, ind_24H = str_detect(Horario, "24[Hh]"))
+```
+  
+  18. Convierte la variable rótulo en un factor que tenga 6 niveles: los 5 rótulos más frecuentes y un nivel "Otros" con el resto.
+```{r}
+precio_estacion <- mutate(precio_estacion, Rótulo = fct_lump(Rótulo, n = 5))
+```
+  
+  19. Realiza un gráfico de barras con el conteo de estaciones por cada tipo de rótulo. Ordenar las barras de mayor a menor.
+```{r}
+ggplot(precio_estacion, aes(x = fct_infreq(Rótulo))) + geom_bar()
+```
+  
+  20. Representa cada gasolinera de Repsol o Cepsa como un punto en función de su longitud y latitud. Cada punto debe debe de estar coloreado de acuerdo al Rótulo.
+```{r}
+precio_estacion %>%
+  filter(Rótulo %in% c("REPSOL", "CEPSA")) %>%
+  ggplot(aes(x = Longitud, y = Latitud, color = Rótulo)) + 
+    geom_point()
+```
+
