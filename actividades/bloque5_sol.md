@@ -39,7 +39,9 @@ bicis_long %>%
 ### Factores
 
 1. Son de tipo numeric y factor
+
 2. `summarize(PlantGrowth, niveles = levels(group))`
+
 3. Las etiquetas del eje x tienen el mismo orden que los niveles del factor, que es orden alfabético
 
 ### Funciones forcats
@@ -47,6 +49,7 @@ bicis_long %>%
 Actividades
 
 1. `mutate(PlantGrowth, group = fct_collapse(group, trt = c("trt1", "trt2")))`
+
 2. Solución
 
    ```{r}

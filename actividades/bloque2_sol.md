@@ -2,13 +2,9 @@
 
 ## Gramática de gráficos
 
-Soluciones
-
 1. Todo gráfico de ggplot tiene que tener los componentes DATA, MAPPINGS y GEOMS, mientras que los componentes STATS y POSITIONS son opcionales.
 
 ## Aesthetics
-
-Soluciones
 
 1. Código
 
@@ -28,8 +24,6 @@ Soluciones
 
 ## geoms
 
-Soluciones
-
 1. Código
 
    ```{r}
@@ -47,9 +41,8 @@ Soluciones
 
 ## Transformaciones estadísticas
 
-Soluciones
-
 1. `?geom_col`
+
 2. Código
 
    ```{r}
@@ -67,8 +60,6 @@ Soluciones
 4. El aviso indica que que por defecto se usa `bins = 30`.
 
 ## Ajustes de posición
-
-Soluciones
 
 1. Código
 

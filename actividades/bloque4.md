@@ -20,15 +20,15 @@
 
 #### Ejercicio 1
 
-1. Calcula la media, máximo y mínimo de las columnas “height”, “mass” y “birth_year” del dataframe starwars. ¿Por qué obtenemos NA como resultado?
+1. Calcula la media, máximo y mínimo de las columnas `height`, `mass` y `birth_year` del dataframe starwars. ¿Por qué obtenemos `NA` como resultado?
 
-2. Consultar la ayuda de la función across para ver como se pueden pasar argumentos extra a las funciones que aplicamos en across
+2. Consultar la ayuda de la función across para ver como se pueden pasar argumentos extra a las funciones que aplicamos en `across`
 
-3. Modificar la solución de 1) para ignorar NAs
+3. Modificar la solución de 1) para ignorar `NA`s
 
 #### Ejercicio 2
 
-Dado el código que vimos en otro ejercicio para contar el número de personajes para cada uno de los valores de la columna sex:
+Dado el código que vimos en otro ejercicio para contar el número de personajes para cada uno de los valores de la columna `sex`:
 
 ```{r}
 starwars %>%
@@ -36,13 +36,13 @@ starwars %>%
     summarize(n = n())
 ```
 
-Modificar este código para que se calcule además la media, máximo y mínimo de las columnas “height”, “mass” y “birth_year”.
+Modificar este código para que se calcule además la media, máximo y mínimo de las columnas `height`, `mass` y `birth_year`
 
 ### Joins
 
-1. Hacer un join de los data.frames band_members y band_instruments2 por las columnas name y artist respectivamente. El resultado tiene que tener tantas filas como valores distintos de las columnas “name” y “artist”
+1. Hacer un join de los data.frames `band_members` y `band_instruments2` por las columnas `name` y `artist` respectivamente. El resultado tiene que tener tantas filas como valores distintos de las columnas `name` y `artist`
 
-2. ¿Aparecen valores que son NA en el resultado? ¿Por qué?
+2. ¿Aparecen valores que son `NA` en el resultado? ¿Por qué?
 
 ## ggplot2 avanzado
 
@@ -58,7 +58,7 @@ bicis <- read_excel('./data/bicis_usos_acumulado.xls',
                     range = "A3:E34")
 ```
 
-1. Pivotar las columnas “Usos bicis abono anual”, “Usos bicis abono ocasional” y “Usos bicis total” para convertirlas en 2: “Tipo_uso” y “Usos”. Tipo_uso tendrás los valores “Usos bicis abono anual”, “Usos bicis abono ocasional” y “Usos bicis total”, mientras que “Usos” contiene los datos numéricos
+1. Pivotar las columnas `Usos bicis abono anual`, `Usos bicis abono ocasional` y `Usos bicis total` para convertirlas en dos: `Tipo_uso` y `Usos`. `Tipo_uso` tendrás los valores "Usos bicis abono anual", "Usos bicis abono ocasional" y "Usos bicis total", mientras que `Usos` contiene los datos numéricos
 
 2. Sobre los datos que se han creado en el apartado 2, realizar el siguiente gráfico de barras:
    - Eje x: días

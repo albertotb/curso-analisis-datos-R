@@ -26,7 +26,9 @@
 #### Ejercicio 1
 
 1. Devuelve todo NAs ya que las columnas tienen NA
+
 2. Se pueden pasar como argumentos a continuación de la lista de funciones
+
 3. Solución:
 
    ```{r}
